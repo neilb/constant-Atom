@@ -1,7 +1,7 @@
 package constant::Atom;
 
 use strict; use warnings;
-our $VERSION = '0.01';
+our $VERSION = '0.011';
 
 use Carp;
 sub new {
@@ -13,19 +13,15 @@ sub new {
 	return $self;
 }
 
-
-use Carp;
-
 use overload
 	'==' => 'equals',
 	'eq' => 'equals',
 	'!=' => 'equals',
 	'ne' => 'notequals',
 
+	#I've decided that both numeric and string equality operators should be allowed.
 #	'==' => sub {my $class = ref(shift); croak "'==' operator isn't defined for $class objects.  Did you mean 'eq'?"},
-#	'eq' => 'equals',
 #	'!=' => sub {my $class = ref(shift); croak "'!=' operator isn't defined for $class objects.  Did you mean 'ne'?"},
-#	'ne' => 'notequals',
 	
 	nomethod => sub {
 		my($a, $b, $c, $operator) = @_;
@@ -37,10 +33,9 @@ use overload
 
 sub tostring {
 	my($self) = @_;
-	#die if not defined $self;
-	#return if not defined $self;
+	
 	if(not defined $self) {
-		return "Unknown atom\n";	
+		croak "tostring should be called on an atom";
 	}
 	return overload::StrVal($self).'='.$$self;
 	
@@ -99,11 +94,11 @@ __END__
 
 =head1 NAME
 
-Atom - unique symbols
+constant::Atom - unique symbols
 
 =head1 SYNOPSIS
 
-	use Atom qw (red yellow blue);
+	use constant::Atom qw (red yellow blue);
 	
 	my $color = red;
 	
@@ -127,16 +122,19 @@ Atoms are used in place of constants in situations where a unique value is neede
 
 Below is an example of where an Atom would solve a problem:
 
+#	use constant::Atom 'error';
 	use constant 'error' => 999999;
 	
 	sub bar {
 	    my($arg) = @_;
-	    #Return error no matter what, just for demonstration purposes.
-	    return not(1) ? $arg : error;	
+	    
+	    #Always return $arg for demonstration purposes (not error).
+	    return 1 ? $arg : error;
 	}
 	
-	#We just happen to call bar with this number, not knowing that this is the error value
-	my $foo = bar(999999);	
+	my $foo = bar(999999);
+	print "Foo: $foo\n";
+	
 	print $foo eq error ? "Foo returned error." : "Foo returned $foo.";
 
 Output: Foo returned error.
@@ -145,16 +143,20 @@ In the above example, the programmer is trying to choose some unlikely value to 
 
 This doesn't happen with Atoms.
 
-	use constant Atom 'error';
+	use constant::Atom 'error';
+#	use constant 'error' => 999999;
 	
 	sub bar {
 	    my($arg) = @_;
-	    return not(1) ? $arg : error;	#Return error no matter what, just for demonstration purposes.
+	    
+	    #Always return $arg for demonstration purposes (not error).
+	    return 1 ? $arg : error;
 	}
 	
 	my $foo = bar(999999);
+	print "Foo: $foo\n";
+	
 	print $foo eq error ? "Foo returned error." : "Foo returned $foo.";
-
 Output: Foo returned 999999.
 
 =head1 COMPARISON TO ALTERNATIVES
@@ -173,7 +175,7 @@ There are two advantages of Atoms over this kind of constant
 	
 	- Atoms maintain their identity through serialization, even between processes:
 		
-		use Atom 'myatom';
+		use constant::Atom 'myatom';
 
 		use Storable qw (freeze thaw);
 		print "Just as we thought!" if myatom eq thaw(freeze(myatom));
@@ -183,16 +185,16 @@ There are two advantages of Atoms over this kind of constant
 
 An atom cast (stringified) into a tring produces a representation that may be useful for debugging purposes:
 	
-	use Atom 'myatom';
+	use constant::Atom 'myatom';
 	
 	my $value = myatom;
 	print "Myatom cast into a string: $value\n";
 
 Output: Myatom cast into a string: Atom=SCALAR(0x18508dc)=main::myatom
 
-Stringified Atoms can be used used as hash keys, matched to a regexps, etc.  When this happens, the string value is not guarunteed to be unique.  Although it is unlikely that you will ever accidently cast an Atom into a string, and even more unlikely that another string value will equal the string representation of the Atom, you might want to use Atom::Strict to be 100% safe:
+Stringified Atoms can be used used as hash keys, matched to a regexps, etc.  When this happens, the string value is not guarunteed to be unique.  Although it is unlikely that you will ever accidently cast an Atom into a string, and even more unlikely that another string value will equal the string representation of the Atom, you might want to use constant::Atom::Strict to be 100% safe:
 
-	use Atom::Strict 'myatom';
+	use constant::Atom::Strict 'myatom';
 	
 	my $value = myatom;
 	print "Myatom cast into a string: $value\n";
@@ -204,7 +206,7 @@ Output: Can't cast Atom::Strict object 'main::myatom' into a string.  Use the 'f
 =item C<name>
 
 	package Languages;
-	use Atom qw (English);
+	use constant::Atom qw (English);
 	my $language = English;
 	
 	#Get the name of the constant
@@ -215,7 +217,7 @@ Output: English
 =item C<fullname>
 
 	package Languages;
-	use Atom qw (English);
+	use constant::Atom qw (English);
 	my $language = English;
 	
 	#Get the string-representation of the constant, which is simply the fully-qualified symbol name.

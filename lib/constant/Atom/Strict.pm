@@ -1,6 +1,8 @@
 package constant::Atom::Strict;
 
-use strict;
+use strict; use warnings;
+our $VERSION = '0.011';
+
 use Carp;
 
 use base 'constant::Atom';

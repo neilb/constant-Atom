@@ -14,7 +14,6 @@ eval {
 };
 like($@, qr /Can't cast/);
 
-
 ###As should this.
 eval {
 	my $thing = $color + 1
