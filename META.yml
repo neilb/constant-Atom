@@ -1,0 +1,9 @@
+--- #YAML:1.0
+name: constant-Atom
+version: 0.01
+author:
+  - Jonathan R. Warden <john@newchester.com>
+abstract: unique symbols
+license: perl
+provides: {}
+generated_by: Module::Build version 0.24
