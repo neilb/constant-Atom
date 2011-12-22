@@ -1,7 +1,7 @@
 package constant::Atom;
 
 use strict; use warnings;
-our $VERSION = '0.011';
+our $VERSION = '0.02';
 
 use Carp;
 sub new {
@@ -16,7 +16,7 @@ sub new {
 use overload
 	'==' => 'equals',
 	'eq' => 'equals',
-	'!=' => 'equals',
+	'!=' => 'notequals',
 	'ne' => 'notequals',
 
 	#I've decided that both numeric and string equality operators should be allowed.

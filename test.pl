@@ -2,7 +2,7 @@ package TestPackage;
 
 use Test::More;
 use strict;
-BEGIN { plan tests => 13 };
+BEGIN { plan tests => 14 };
 
 use constant::Atom::Strict qw (red yellow blue);
 
@@ -56,3 +56,12 @@ use constant::Atom qw (something);
 
 my $okay = "".something;
 like($okay, qr/constant::Atom=SCALAR/);
+
+#
+# test added to confirm overloading bug on !=
+#
+
+use constant::Atom qw(happy sad);
+my $mood = happy;
+
+ok(!($mood != happy), "checking != overloading");
