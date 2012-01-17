@@ -183,7 +183,7 @@ There are two advantages of Atoms over this kind of constant
 
 =head1 ATOMS AS STRINGS
 
-An atom cast (stringified) into a tring produces a representation that may be useful for debugging purposes:
+An atom cast (stringified) into a string produces a representation that may be useful for debugging purposes:
 	
 	use constant::Atom 'myatom';
 	
@@ -192,7 +192,7 @@ An atom cast (stringified) into a tring produces a representation that may be us
 
 Output: Myatom cast into a string: Atom=SCALAR(0x18508dc)=main::myatom
 
-Stringified Atoms can be used used as hash keys, matched to a regexps, etc.  When this happens, the string value is not guarunteed to be unique.  Although it is unlikely that you will ever accidently cast an Atom into a string, and even more unlikely that another string value will equal the string representation of the Atom, you might want to use constant::Atom::Strict to be 100% safe:
+Stringified Atoms can be used as hash keys, matched to a regexps, etc.  When this happens, the string value is not guaranteed to be unique.  Although it is unlikely that you will ever accidently cast an Atom into a string, and even more unlikely that another string value will equal the string representation of the Atom, you might want to use constant::Atom::Strict to be 100% safe:
 
 	use constant::Atom::Strict 'myatom';
 	
