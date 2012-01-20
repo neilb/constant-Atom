@@ -231,7 +231,8 @@ C<constant>
 
 =head1 AUTHOR
 
-Jonathan R. Warden <john@newchester.com>
+This module was originally created by Jonathan R. Warden E<lt>john@newchester.comE<gt>,
+but is currently being maintained by Neil Bowers E<lt>neilb@cpan.orgE<gt>.
 
 =head1 COPYRIGHT
 
@@ -241,5 +242,4 @@ This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =cut	
-
 
