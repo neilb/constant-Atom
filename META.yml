@@ -1,9 +1,24 @@
---- #YAML:1.0
-name: constant-Atom
-version: 0.011
+---
+abstract: 'unique symbols'
 author:
-  - Jonathan R. Warden <john@newchester.com>
-abstract: unique symbols
+  - "This module was originally created by Jonathan R. Warden E<lt>john@newchester.comE<gt>,\nbut is currently being maintained by Neil Bowers E<lt>neilb@cpan.orgE<gt>."
+build_requires: {}
+configure_requires:
+  Module::Build: 0.38
+dynamic_config: 1
+generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.112150'
 license: perl
-provides: {}
-generated_by: Module::Build version 0.24
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: constant-Atom
+provides:
+  constant::Atom:
+    file: lib/constant/Atom.pm
+    version: 0.02
+  constant::Atom::Strict:
+    file: lib/constant/Atom/Strict.pm
+    version: 0.011
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.02
