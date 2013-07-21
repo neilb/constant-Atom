@@ -204,6 +204,8 @@ Output: Can't cast Atom::Strict object 'main::myatom' into a string.  Use the 'f
 
 =head1 OTHER METHODS
 
+=over 4
+
 =item C<name>
 
 	package Languages;
@@ -225,6 +227,8 @@ Output: English
 	"$language" eq $language->fullname or die "These should be the same.";
 	
 Output: Languages::English
+
+=back
 
 =head1 SEE ALSO
 
