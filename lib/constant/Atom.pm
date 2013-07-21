@@ -1,7 +1,8 @@
 package constant::Atom;
 
-use strict; use warnings;
-our $VERSION = '0.02';
+use strict;
+use warnings;
+our $VERSION = '0.03';
 
 use Carp;
 sub new {
@@ -228,6 +229,10 @@ Output: Languages::English
 =head1 SEE ALSO
 
 C<constant>
+
+=head1 REPOSITORY
+
+L<https://github.com/neilbowers/constant-Atom>
 
 =head1 AUTHOR
 
