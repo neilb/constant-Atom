@@ -1,5 +1,9 @@
 Revision history for perl module constant::Atom
 
+0.05 2013-10-24
+
+    - github repo now included in metadata
+
 0.04 2013-07-21
 
     - Removed the auto generated meta files from the repo and MANIFEST
@@ -18,7 +22,8 @@ Revision history for perl module constant::Atom
 
 0.011 2004-05-08
 
-    - fixed documentation, which was referring to Atom rather than constant::Atom
+    - fixed documentation,
+      which was referring to Atom rather than constant::Atom
 
 0.01 2004-05-07
 
