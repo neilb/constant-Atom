@@ -1,5 +1,9 @@
 Revision history for perl module constant::Atom
 
+0.06 2013-10-25
+
+    - I hadn't been updating version number in constant::Atom::Strict
+
 0.05 2013-10-24
 
     - github repo now included in metadata
