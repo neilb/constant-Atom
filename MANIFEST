@@ -1,7 +1,0 @@
-lib/constant/Atom.pm
-lib/constant/Atom/Strict.pm
-t/original.t
-Build.PL
-MANIFEST
-Changes
-README
