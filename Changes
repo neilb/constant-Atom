@@ -1,5 +1,9 @@
 Revision history for perl module constant::Atom
 
+0.07 2014-02-02
+
+    - Moved test.pl to t/original.t
+
 0.06 2013-10-25
 
     - I hadn't been updating version number in constant::Atom::Strict

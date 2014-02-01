@@ -1,7 +1,9 @@
-package TestPackage;
+#!perl
 
 use Test::More;
 use strict;
+use warnings;
+
 BEGIN { plan tests => 14 };
 
 use constant::Atom::Strict qw (red yellow blue);
@@ -40,10 +42,10 @@ isnt($color, blue);
 isnt($color, "red");
 isnt($color, "TestPackag::red");
 is($color->name, 'red');
-is($color->fullname, 'TestPackage::red');
+is($color->fullname, 'main::red');
 
 use Data::Dumper;
-like(Dumper(red), qr {bless.+do.+TestPackage::red.+constant::Atom::Strict});
+like(Dumper(red), qr {bless.+do.+main::red.+constant::Atom::Strict});
 
 ###Check serialization.
 use Storable qw (freeze thaw);

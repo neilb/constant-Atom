@@ -1,6 +1,6 @@
 lib/constant/Atom.pm
 lib/constant/Atom/Strict.pm
-test.pl
+t/original.t
 Build.PL
 MANIFEST
 Changes
