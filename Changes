@@ -5,6 +5,7 @@ Revision history for perl module constant::Atom
     - Switched to Dist::Zilla
     - Moved test.pl to t/original.t
     - Added a bunch of module links to SEE ALSO
+    - Min perl version 5.6.0
 
 0.06 2013-10-25
 
