@@ -232,7 +232,7 @@ Output: Languages::English
 
 =head1 SEE ALSO
 
-C<constant>
+L<constant>, L<enum>, L<Const::Fast>, L<Constant::Generate>.
 
 =head1 REPOSITORY
 
