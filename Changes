@@ -6,6 +6,7 @@ Revision history for perl module constant::Atom
     - Moved test.pl to t/original.t
     - Added a bunch of module links to SEE ALSO
     - Min perl version 5.6.0
+    - Tidied up structure and formatting of pod
 
 0.06 2013-10-25
 
