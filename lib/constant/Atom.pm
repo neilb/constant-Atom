@@ -7,86 +7,84 @@ our $VERSION = '0.07';
 
 use Carp;
 sub new {
-	my($pkg, $client_package, $name) = @_;
+    my($pkg, $client_package, $name) = @_;
 
-	croak if not defined $name or not defined $client_package;
-	my $string = $client_package."::".$name;
-	my $self = bless \$string, $pkg;
-	return $self;
+    croak if not defined $name or not defined $client_package;
+    my $string = $client_package."::".$name;
+    my $self = bless \$string, $pkg;
+    return $self;
 }
 
 use overload
-	'==' => 'equals',
-	'eq' => 'equals',
-	'!=' => 'notequals',
-	'ne' => 'notequals',
+    '==' => 'equals',
+    'eq' => 'equals',
+    '!=' => 'notequals',
+    'ne' => 'notequals',
 
-	#I've decided that both numeric and string equality operators should be allowed.
-#	'==' => sub {my $class = ref(shift); croak "'==' operator isn't defined for $class objects.  Did you mean 'eq'?"},
-#	'!=' => sub {my $class = ref(shift); croak "'!=' operator isn't defined for $class objects.  Did you mean 'ne'?"},
-	
-	nomethod => sub {
-		my($a, $b, $c, $operator) = @_;
-		my $class = ref($a);
-		croak "The '$operator' operation isn't defined for $class objects";
-	},
-	'""' =>  'tostring'
+    #I've decided that both numeric and string equality operators should be allowed.
+    # '==' => sub {my $class = ref(shift); croak "'==' operator isn't defined for $class objects.  Did you mean 'eq'?"},
+    # '!=' => sub {my $class = ref(shift); croak "'!=' operator isn't defined for $class objects.  Did you mean 'ne'?"},
+
+    nomethod => sub {
+        my($a, $b, $c, $operator) = @_;
+        my $class = ref($a);
+        croak "The '$operator' operation isn't defined for $class objects";
+    },
+    '""' =>  'tostring'
 ;
 
 sub tostring {
-	my($self) = @_;
-	
-	if(not defined $self) {
-		croak "tostring should be called on an atom";
-	}
-	return overload::StrVal($self).'='.$$self;
-	
+    my($self) = @_;
+
+    if (not defined $self) {
+        croak "tostring should be called on an atom";
+    }
+    return overload::StrVal($self).'='.$$self;
 }
 
 sub equals {
-	ref($_[1]) eq ref($_[0]) and ${$_[0]} eq ${$_[1]}
+    ref($_[1]) eq ref($_[0]) and ${$_[0]} eq ${$_[1]}
 };
 
 sub notequals {
-	not (ref($_[1]) eq ref($_[0]) and ${$_[0]} eq ${$_[1]})
+    not (ref($_[1]) eq ref($_[0]) and ${$_[0]} eq ${$_[1]})
 };
 
 sub name {
-	my($self) = @_;
-	my @parts = split /\:\:/, $$self;	
-	return $parts[-1];
+    my($self) = @_;
+    my @parts = split /\:\:/, $$self;
+    return $parts[-1];
 }
 
 sub fullname {
-	my($self) = @_;
-	return $$self;
+    my($self) = @_;
+    return $$self;
 }
 
-	
-sub make_identifier {
-	my($pkg, $client_package, $name) = @_;
-	
-	my $id = $pkg->new($client_package, $name);
 
-	no strict 'refs';
-	
-	my $full_name = $client_package."::".$name;
-	
-	*$full_name = sub () {
-		#$pkg->new($client_package, $name);
-		$id;
-	};
+sub make_identifier {
+    my($pkg, $client_package, $name) = @_;
+    my $id = $pkg->new($client_package, $name);
+
+    no strict 'refs';
+
+    my $full_name = $client_package."::".$name;
+
+    *$full_name = sub () {
+        #$pkg->new($client_package, $name);
+        $id;
+    };
 }
 
 sub import {
-	my($pkg, @names) = @_;
-	
-    return unless $pkg;			# Ignore 'use constant;'
-	
-	my $client_package = caller(0);
-	for(@names) {
-		$pkg->make_identifier($client_package, $_);
-	}
+    my($pkg, @names) = @_;
+
+    return unless $pkg;     # Ignore 'use constant;'
+
+    my $client_package = caller(0);
+    for (@names) {
+        $pkg->make_identifier($client_package, $_);
+    }
 }
 
 
@@ -142,7 +140,7 @@ Below is an example of where an Atom would solve a problem:
 
  # use constant::Atom 'error';
    use constant 'error' => 999999;
-	
+    
    sub bar {
        my($arg) = @_;
  
