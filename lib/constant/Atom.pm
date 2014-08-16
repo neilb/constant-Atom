@@ -9,7 +9,7 @@ use Carp;
 sub new {
 	my($pkg, $client_package, $name) = @_;
 
-	croak if not defined $name or not defined $client_package;	
+	croak if not defined $name or not defined $client_package;
 	my $string = $client_package."::".$name;
 	my $self = bless \$string, $pkg;
 	return $self;
@@ -116,15 +116,27 @@ constant::Atom - define unique symbols (constant functions with opaque values)
 
 =head1 DESCRIPTION
 
-Unlike constants declared with C<constant>, Atoms are not associated with any specific scalar value.
-Instead, Atoms have their own independent identity, and will only compare positively (via the 'eq' test)
-with other identical Atoms.
-All other operations on Atoms are undefined, including casting to a string and casting to a number.
+This module is used to declare 'function constants', similar to those
+created with L<constant> and L<enum>, but with a key difference:
+you don't specify a value for the constants, and you should use it in
+situations where you don't need to know the value.
 
-Atoms are used in place of constants in situations where a unique value is needed to represent
-some idea or program state, but where that value is not naturally associated with a scalar value,
+Atoms have their own independent identity,
+and will only compare positively (via the 'eq' test)
+with other identical Atoms.
+All other operations on Atoms are undefined,
+including casting to a string and casting to a number.
+
+Atoms are used in place of constants in situations where a unique value
+is needed to represent some idea or program state,
+but where that value is not naturally associated with a scalar value,
 and shouldn't be confused with one.
-Atoms are similar to C enums in this respect, except that Atoms do not have an ordinal value.
+Atoms are similar to C enums in this respect,
+except that Atoms do not have an ordinal value.
+
+For example, you might use L<constant> or L<enum> where you want to
+define constants that are used to index an array.
+C<constant::Atom> can't be used in such situations.
 
 Below is an example of where an Atom would solve a problem:
 
@@ -265,5 +277,5 @@ Copyright 2004 Jonathan R. Warden. All rights reserved.
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
-=cut	
+=cut
 
