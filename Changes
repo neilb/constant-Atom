@@ -5,6 +5,7 @@ Revision history for perl module constant::Atom
     - Improved formatting of SYNOPSIS.
     - Improved DESCRIPTION.
     - Got rid of all hard tabs.
+    - Improved SEE ALSO, and added link to my review of constant modules.
 
 0.07 2014-02-02
 

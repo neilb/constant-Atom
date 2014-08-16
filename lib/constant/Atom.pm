@@ -3,7 +3,7 @@ package constant::Atom;
 use 5.006;
 use strict;
 use warnings;
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 use Carp;
 sub new {
@@ -257,7 +257,15 @@ Output: Languages::English
 
 =head1 SEE ALSO
 
-L<constant>, L<enum>, L<Const::Fast>, L<Constant::Generate>.
+L<constant> is a core module used to declare 'function constants', where you specify the value.
+
+L<enum> is used to define a number of function constants where you want them to have sequential values,
+like C's enumerated type.
+
+L<Const::Fast> lets you create immutable variables, which act like constants, but can be inlined in strings etc,
+where function constants can't.
+
+There are L<plenty of other constant modules|http://neilb.org/reviews/constants.html> on CPAN.
 
 =head1 REPOSITORY
 
