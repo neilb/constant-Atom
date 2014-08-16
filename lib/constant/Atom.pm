@@ -100,21 +100,19 @@ constant::Atom - define unique symbols (constant functions with opaque values)
 
 =head1 SYNOPSIS
 
-	use constant::Atom qw (red yellow blue);
-	
-	my $color = red;
-	
-	print "Just as we thought!\n" if $color eq red;
-	print "This will never happen.\n" if $color eq blue;
-	print "Atoms never equal strings!\n" if $color eq 'red';
-	
-	print "Color is ".$color->name."\n";
-	
-	
-	#The following raises an exception, because addition isn't defined for Atom objects.
-	$color + 1; 
-
-
+ use constant::Atom qw/ red yellow blue /;
+ 
+ my $color = red;
+ 
+ print "Just as we thought!\n"        if $color eq red;
+ print "This will never happen.\n"    if $color eq blue;
+ print "Atoms never equal strings!\n" if $color eq 'red';
+ 
+ print "Color is ".$color->name."\n";
+ 
+ # The following raises an exception,
+ # because addition isn't defined for Atom objects.
+ $color + 1; 
 
 =head1 DESCRIPTION
 
