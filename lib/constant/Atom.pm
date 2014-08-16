@@ -96,7 +96,7 @@ __END__
 
 =head1 NAME
 
-constant::Atom - unique symbols
+constant::Atom - define unique symbols (constant functions with opaque values)
 
 =head1 SYNOPSIS
 
