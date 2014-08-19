@@ -4,9 +4,9 @@ use 5.006;
 use strict;
 use warnings;
 
+use parent 'constant::Atom';
 use Carp;
 
-use base 'constant::Atom';
 
 sub tostring {
 	my($self) = @_;
