@@ -4,7 +4,7 @@ use Test::More;
 use strict;
 use warnings;
 
-BEGIN { plan tests => 14 };
+BEGIN { plan tests => 15 };
 
 use constant::Atom::Strict qw (red yellow blue);
 
@@ -67,3 +67,8 @@ use constant::Atom qw(happy sad);
 my $mood = happy;
 
 ok(!($mood != happy), "checking != overloading");
+
+eval {
+    my $string = constant::Atom::tostring();
+};
+like($@, qr/tostring should be called on an atom/);
