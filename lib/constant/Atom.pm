@@ -69,10 +69,7 @@ sub make_identifier {
 
     my $full_name = $client_package."::".$name;
 
-    *$full_name = sub () {
-        #$pkg->new($client_package, $name);
-        $id;
-    };
+    *$full_name = sub () { $id; };
 }
 
 sub import {
