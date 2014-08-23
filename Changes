@@ -1,5 +1,8 @@
 Revision history for perl module constant::Atom
 
+0.10 2014-08-23
+    - constant/Atom.pm also had a hardcoded $VERSION. Doh.
+
 0.09 2014-08-19
     - Forgot to remove $VERSION from constant::Atom::Strict when switching
       the dist to Dist::Zilla.
