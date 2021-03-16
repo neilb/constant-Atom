@@ -269,8 +269,10 @@ L<https://github.com/neilbowers/constant-Atom>
 
 =head1 AUTHOR
 
-This module was originally created by Jonathan R. Warden E<lt>john@newchester.comE<gt>,
-but is currently being maintained by Neil Bowers E<lt>neilb@cpan.orgE<gt>.
+This module was originally created by
+Jonathan R. Warden E<lt>john@newchester.comE<gt> in 2004,
+but has been maintained by Neil Bowers E<lt>neilb@cpan.orgE<gt>
+since 2012.
 
 =head1 COPYRIGHT
 

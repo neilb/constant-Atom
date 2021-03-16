@@ -4,6 +4,8 @@ Revision history for perl module constant::Atom
     - include META.json in releases
     - switched to github issues for bug tracker
     - tag and push on release
+    - Changed text in AUTHOR section, which was suggesting I'm
+      temporarily maintaining it, but I've been doing releases for 10 years.
 
 0.10 2014-08-23 NEILB
     - constant/Atom.pm also had a hardcoded $VERSION. Doh.
