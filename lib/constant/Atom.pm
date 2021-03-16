@@ -265,7 +265,7 @@ There are L<plenty of other constant modules|http://neilb.org/reviews/constants.
 
 =head1 REPOSITORY
 
-L<https://github.com/neilbowers/constant-Atom>
+L<https://github.com/neilb/constant-Atom>
 
 =head1 AUTHOR
 
