@@ -1,5 +1,8 @@
 Revision history for perl module constant::Atom
 
+0.11 2021-03-16 NEILB
+    - include META.json in releases
+
 0.10 2014-08-23 NEILB
     - constant/Atom.pm also had a hardcoded $VERSION. Doh.
     - Added tests for some failure cases, as the result of
